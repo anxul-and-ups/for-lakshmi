@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Lakshmi 💕</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f6a5c0 0%, #c89bef 45%, #a3b9f5 100%);
+    position: relative;
+  }
+
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    z-index: 0;
+    animation: floatBlob 12s ease-in-out infinite;
+  }
+  .blob1 { width: 320px; height: 320px; background: #ff9ec4; top: -80px; left: -80px; }
+  .blob2 { width: 260px; height: 260px; background: #b18cff; bottom: -60px; right: -60px; animation-delay: -3s; }
+  .blob3 { width: 220px; height: 220px; background: #8fd3ff; top: 45%; left: 55%; animation-delay: -6s; }
+  .blob4 { width: 180px; height: 180px; background: #ffd1e8; top: 60%; left: 5%; animation-delay: -9s; }
+
+  @keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(30px, -25px) scale(1.08); }
+    66%      { transform: translate(-25px, 20px) scale(0.95); }
+  }
+
+  .screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: scale(0.96);
+  }
+  .screen.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .glass {
+    width: 100%;
+    max-width: 400px;
+    padding: 36px 26px;
+    text-align: center;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(120, 60, 150, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    color: #fff;
+    position: relative;
+    z-index: 2;
+  }
+
+  .emoji-big {
+    font-size: 72px;
+    line-height: 1;
+    margin-bottom: 14px;
+    display: inline-block;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.4px;
+    text-shadow: 0 2px 12px rgba(160, 60, 120, 0.35);
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 10px rgba(160, 60, 120, 0.3);
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 30px;
+    min-width: 120px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a1f52;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(120, 60, 150, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.6s ease;
+    user-select: none;
+  }
+
+  .btn:hover, .btn:focus {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(120, 60, 150, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    background: #fff;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn.primary {
+    background: linear-gradient(135deg, #ff6fa5, #b46bff);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 26px rgba(200, 80, 180, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  .btn.primary:hover {
+    background: linear-gradient(135deg, #ff5c9b, #a855ff);
+  }
+
+  .btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+  .btn:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .celebration {
+    font-size: 60px;
+    margin-bottom: 16px;
+    animation: bounce 1.2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .heart {
+    position: fixed;
+    bottom: -60px;
+    font-size: 26px;
+    z-index: 1;
+    animation: riseUp linear infinite;
+    pointer-events: none;
+  }
+  @keyframes riseUp {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  #noBtn.flee {
+    position: fixed !important;
+    transition: top 0.25s ease, left 0.25s ease;
+    z-index: 100;
+  }
+
+  .tiny {
+    font-size: 12px;
+    opacity: 0.75;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="blob blob4"></div>
+
+  <!-- SCREEN 1 -->
+  <section id="screen-welcome" class="screen active">
+    <div class="glass">
+      <div class="emoji-big">🌸</div>
+      <h1>Hi Lakshmi ✨</h1>
+      <h2>I'm Tulsi 💕</h2>
+      <p>A little something just for you...</p>
+      <div class="btn-row">
+        <button class="btn primary" onclick="goTo('screen-letter')">
+          Enter <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 2 -->
+  <section id="screen-letter" class="screen">
+    <div class="glass">
+      <div class="emoji-big">💌</div>
+      <h1>Dear Lakshmi,</h1>
+      <p id="typedText" style="min-height: 140px; font-size: 15.5px;"></p>
+      <div class="btn-row">
+        <button id="continueBtn" class="btn primary hidden" onclick="goTo('screen-question')">
+          Continue <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 3 -->
+  <section id="screen-question" class="screen">
+    <div class="glass">
+      <div class="emoji-big">🙂</div>
+      <h1>So will you be my Kuchu Puchu?</h1>
+      <div class="btn-row" id="questionBtns">
+        <button class="btn primary" onclick="goTo('screen-yes')">Yes</button>
+        <button class="btn" id="noBtn">No</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 4 -->
+  <section id="screen-no1" class="screen">
+    <div class="glass">
+      <div class="emoji-big">🥺</div>
+      <h1>Please think again!</h1>
+      <p>Itni jaldi na matt bolo 😥</p>
+      <div class="btn-row">
+        <button class="btn primary" onclick="goTo('screen-yes')">Yes</button>
+        <button class="btn" onclick="goTo('screen-no2')">No</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 5 -->
+  <section id="screen-no2" class="screen">
+    <div class="glass">
+      <div class="emoji-big">😣</div>
+      <h1>Ek aur baar soch lo!</h1>
+      <p>Kyu aisa kar rahi ho? Plzzz man jao 😣</p>
+      <div class="btn-row">
+        <button class="btn primary" onclick="goTo('screen-yes')">Yes</button>
+        <button class="btn" onclick="goTo('screen-no3')">No</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 6 -->
+  <section id="screen-no3" class="screen">
+    <div class="glass">
+      <div class="emoji-big">😭</div>
+      <h1>Baby man jao na!</h1>
+      <p>Kitna bhav khaogi? Bahut galat baat hai yrr 😭</p>
+      <div class="btn-row">
+        <button class="btn primary" onclick="goTo('screen-yes')">Yes</button>
+        <button class="btn" id="moveNoBtn">No</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 7 -->
+  <section id="screen-yes" class="screen">
+    <div class="glass">
+      <div class="celebration">🥰</div>
+      <h1>Thank you thank you very much 🥹</h1>
+      <p class="tiny">— Tulsi</p>
+    </div>
+  </section>
+
+<script>
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
+    if (id === 'screen-letter') startTypewriter();
+    if (id === 'screen-yes') startHearts();
+  }
+
+  /* Typewriter */
+  const letterText = "With every beat of my heart, I find myself falling deeper in love with you.\n\nSo today I ask you to take this journey with me.";
+  let typingStarted = false;
+
+  function startTypewriter() {
+    if (typingStarted) return;
+    typingStarted = true;
+    const el = document.getElementById('typedText');
+    const btn = document.getElementById('continueBtn');
+    el.innerHTML = '';
+    btn.classList.add('hidden');
+    let i = 0;
+    const speed = 45;
+    (function type() {
+      if (i < letterText.length) {
+        const ch = letterText[i];
+        if (ch === '\n') el.innerHTML += '<br>';
+        else el.textContent += ch;
+        i++;
+        setTimeout(type, speed);
+      } else {
+        // fade in continue button
+        btn.classList.remove('hidden');
+      }
+    })();
+  }
+
+  /* No button — flees, doesn't disappear */
+  const noBtn = document.getElementById('noBtn');
+  function fleeNo() {
+    noBtn.classList.add('flee');
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 80;
+    noBtn.style.left = Math.floor(Math.random() * maxX) + 'px';
+    noBtn.style.top  = Math.floor(Math.random() * maxY) + 'px';
+  }
+  noBtn.addEventListener('mouseenter', fleeNo);
+  noBtn.addEventListener('touchstart', function(e){ e.preventDefault(); fleeNo(); }, {passive:false});
+  noBtn.addEventListener('click', function(e){ e.preventDefault(); fleeNo(); });
+
+  /* moveNoBtn on no3 */
+  const moveNoBtn = document.getElementById('moveNoBtn');
+  if (moveNoBtn) {
+    const flee2 = () => {
+      moveNoBtn.classList.add('flee');
+      const maxX = window.innerWidth - 120;
+      const maxY = window.innerHeight - 80;
+      moveNoBtn.style.left = Math.floor(Math.random() * maxX) + 'px';
+      moveNoBtn.style.top  = Math.floor(Math.random() * maxY) + 'px';
+    };
+    moveNoBtn.addEventListener('mouseenter', flee2);
+    moveNoBtn.addEventListener('touchstart', function(e){ e.preventDefault(); flee2(); }, {passive:false});
+  }
+
+  /* Hearts */
+  let heartsStarted = false;
+  function startHearts() {
+    if (heartsStarted) return;
+    heartsStarted = true;
+    const emojis = ['💖','💕','💗','💓','🌸','✨'];
+    setInterval(() => {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = (5 + Math.random() * 4) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 9000);
+    }, 320);
+  }
+</script>
+</body>
+
+</html>
